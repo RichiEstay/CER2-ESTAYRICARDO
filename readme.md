@@ -38,19 +38,25 @@ Además, incorpora un sistema de inicio y cierre de sesión, una sección de ges
    py manage.py migrate
    ```
 
-6. Crear un superusuario:
+6. Importar los datos de prueba:
+
+   ```bash
+   py manage.py loaddata datos_prueba.json
+   ```
+
+7. Crear un superusuario:
 
    ```bash
    py manage.py createsuperuser
    ```
 
-7. Iniciar el servidor:
+8. Iniciar el servidor:
 
    ```bash
    py manage.py runserver
    ```
 
-8. Abrir la aplicación en:
+9. Abrir la aplicación en:
 
    http://127.0.0.1:8000/home/
 
@@ -62,8 +68,9 @@ Además, incorpora un sistema de inicio y cierre de sesión, una sección de ges
 - Clasificación y filtrado por categorías.
 - Administración mediante Django Admin.
 - Inicio y cierre de sesión.
-- Área de gestión para usuarios autenticados y autorizados.
+- Área de gestión restringida por permisos.
 - Control de permisos para agregar y modificar lugares.
+- Protección de las operaciones administrativas contra accesos no autorizados.
 
 ## Usuarios y permisos
 
@@ -77,17 +84,44 @@ El sistema utiliza el modelo de usuarios y permisos incorporado en Django.
 - Can add lugar patrimonial.
 - Can change lugar patrimonial.
 
+No tiene permiso para eliminar lugares patrimoniales.
+
 **Visitante registrado:** usuario sin permisos de gestión, que puede consultar el catálogo público, pero no acceder a la sección de gestión restringida.
 
-Para configurar los permisos, ingresar a Django Admin con un superusuario, crear el grupo `Gestores Patrimoniales`, asignarle los permisos indicados y asociar los usuarios correspondientes.
+### Configuración de usuarios y permisos
+
+1. Ingresar a Django Admin con el superusuario.
+2. Crear el grupo `Gestores Patrimoniales`.
+3. Asignarle los permisos para ver, agregar y modificar lugares patrimoniales.
+4. Crear un usuario llamado `gestor1`.
+5. Activar `Staff status` para ese usuario.
+6. Asociarlo al grupo `Gestores Patrimoniales`.
+7. Crear opcionalmente un usuario `visitante1` sin permisos administrativos para comprobar las restricciones.
+
+Las contraseñas deben definirse durante la configuración y no se incluyen en el repositorio.
 
 ## Datos de prueba
 
-Después de crear el superusuario, ingresar a Django Admin para registrar categorías y lugares patrimoniales.
+El proyecto incluye el archivo `datos_prueba.json`, que contiene categorías y lugares patrimoniales para probar el funcionamiento de la aplicación.
 
-Se pueden utilizar las categorías Monumentos y Edificios históricos, junto con lugares como Palacio Baburizza, Palacio Rioja y Moáis de Rapa Nui.
+Para cargar estos registros, ejecutar:
 
-Los usuarios de prueba pueden crearse desde Django Admin, sin utilizar contraseñas reales o personales.
+```bash
+py manage.py loaddata datos_prueba.json
+```
+
+Este comando debe ejecutarse después de aplicar las migraciones.
+
+Los datos permiten comprobar el catálogo, los detalles individuales y los filtros por categoría.
+
+Los usuarios y grupos se configuran por separado desde Django Admin, siguiendo las instrucciones anteriores.
+
+## Pruebas de acceso
+
+- Un usuario sin iniciar sesión que intenta entrar a `/gestion/` es enviado al formulario de inicio de sesión.
+- Un usuario autenticado sin permisos de gestión recibe un error 403.
+- Un usuario con permisos puede ingresar a Gestión y administrar lugares patrimoniales desde Django Admin.
+- Un gestor sin permiso de eliminación no puede eliminar lugares patrimoniales.
 
 ## Repositorio
 

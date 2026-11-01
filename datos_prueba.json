@@ -1,0 +1,74 @@
+[
+{
+    "model": "core.categoria",
+    "pk": 1,
+    "fields": {
+        "nombre": "Monumentos Históricos",
+        "descripcion": "Construcciones y sitios de importancia histórica para Chile."
+    }
+},
+{
+    "model": "core.categoria",
+    "pk": 2,
+    "fields": {
+        "nombre": "Edificios Patrimoniales",
+        "descripcion": "Edificios destacados por su arquitectura e historia."
+    }
+},
+{
+    "model": "core.categoria",
+    "pk": 3,
+    "fields": {
+        "nombre": "Patrimonio arqueológico",
+        "descripcion": "Vestigios y sitios relacionados con antiguas culturas."
+    }
+},
+{
+    "model": "core.lugarpatrimonial",
+    "pk": 1,
+    "fields": {
+        "nombre": "Palacio Baburizza",
+        "descripcion": "El Palacio Baburizza es uno de los tesoros arquitectónicos y culturales más deslumbrantes de Chile. Situado en la cima del emblemático Cerro Alegre en Valparaíso (Paseo Yugoslavo 176), este majestuoso palacio de más de 2.000 metros cuadrados funciona desde 1971 como la sede del Museo Municipal de Bellas Artes de Valparaíso, albergando una de las colecciones pictóricas públicas más valiosas del país.",
+        "ubicacion": "Valparaíso",
+        "anio_construccion": 1916,
+        "imagen": "https://valparaiso.com/wp-content/uploads/sites/3/2019/05/Fotolia_165604190_Subscription_Monthly_M.jpg",
+        "categoria": 2
+    }
+},
+{
+    "model": "core.lugarpatrimonial",
+    "pk": 2,
+    "fields": {
+        "nombre": "Palacio Rioja",
+        "descripcion": "El Palacio Rioja es una de las obras arquitectónicas más emblemáticas y hermosas de Chile, ubicada en pleno centro de Viña del Mar (calle Quillota 214). Desde 1979 funciona como el Museo de Artes Decorativas, albergando una impresionante colección de mobiliario y objetos que reflejan el refinado gusto aristocrático de principios del siglo XX",
+        "ubicacion": "Viña del Mar",
+        "anio_construccion": 1912,
+        "imagen": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Palacio_Rioja%2C_Vi%C3%B1a_del_Mar_20230716_01.jpg?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original",
+        "categoria": 2
+    }
+},
+{
+    "model": "core.lugarpatrimonial",
+    "pk": 3,
+    "fields": {
+        "nombre": "Moáis de Rapa Nui",
+        "descripcion": "Los moáis de Rapa Nui (Isla de Pascua) son gigantescas estatuas monolíticas de piedra que representan el legado cultural, arquitectónico y espiritual más fascinante del pueblo rapanui. Esculpidas principalmente entre los siglos X y XVI, estas esculturas son famosas en todo el mundo y fueron declaradas Patrimonio de la Humanidad por la UNESCO en 1995 como parte del Parque Nacional Rapa Nui.",
+        "ubicacion": "Isla de pascua",
+        "anio_construccion": 1200,
+        "imagen": "https://upload.wikimedia.org/wikipedia/commons/b/b6/AhuTongariki15Moais.jpg?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original",
+        "categoria": 3
+    }
+},
+{
+    "model": "core.lugarpatrimonial",
+    "pk": 4,
+    "fields": {
+        "nombre": "Castillo de Niebla",
+        "descripcion": "El Castillo de la Pura y Limpia Concepción de Monforte de Lemos, conocido popularmente como Castillo de Niebla o Fuerte de Niebla, es una de las fortificaciones españolas más importantes de la época colonial en el sur de Chile. Construido originalmente a partir de 1645 por orden del Virrey del Perú, se ubica en la Punta de Niebla, a unos 18 kilómetros de la ciudad de Valdivia, en la Región de Los Ríos",
+        "ubicacion": "Niebla, Valdivia",
+        "anio_construccion": 1671,
+        "imagen": "https://patrimonio.bienes.cl/wp-content/uploads/2020/05/P1831190-scaled.jpg",
+        "categoria": 1
+    }
+}
+]
