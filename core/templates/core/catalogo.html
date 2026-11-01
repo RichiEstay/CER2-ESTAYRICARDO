@@ -6,16 +6,45 @@
 
 <p>Conoce los lugares patrimoniales de Chile.</p>
 
+<form method="GET" action="{% url 'catalogo' %}" class="mb-4">
+
+    <label for="categoria" class="form-label">
+        Filtrar por categoría:
+    </label>
+
+    <select name="categoria" id="categoria" class="form-select">
+
+        <option value="">Todas las categorías</option>
+
+        {% for categoria in categorias %}
+
+        <option value="{{ categoria.id }}">
+            {{ categoria.nombre }}
+        </option>
+
+        {% endfor %}
+
+    </select>
+
+    <button type="submit" class="btn btn-primary mt-2">
+        Filtrar
+    </button>
+
+</form>
+
 <div class="row">
 
     {% for lugar in lugares %}
 
     <div class="col-md-4 mb-4">
+
         <div class="card h-100">
 
-            <img src="{{ lugar.imagen }}" class="card-img-top" alt="{{ lugar.nombre }}">
+            <img src="{{ lugar.imagen }}" class="card-img-top"
+                 alt="{{ lugar.nombre }}">
 
             <div class="card-body">
+
                 <h5 class="card-title">{{ lugar.nombre }}</h5>
 
                 <p class="card-text">
@@ -29,14 +58,16 @@
                 <a href="{% url 'detalle' lugar.id %}" class="btn btn-primary">
                     Ver detalle
                 </a>
+
             </div>
 
         </div>
+
     </div>
 
     {% empty %}
 
-    <p>No existen lugares patrimoniales registrados.</p>
+    <p>No existen lugares patrimoniales para esta categoría.</p>
 
     {% endfor %}
 

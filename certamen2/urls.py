@@ -23,4 +23,7 @@ urlpatterns = [
     path('home/', views.home, name='home'),
     path('catalogo/', views.catalogo, name='catalogo'),
     path('detalle/<int:id>/', views.detalle, name='detalle'),
+    path('login/', views.iniciar_sesion, name='login'),
+    path('logout/', views.cerrar_sesion, name='logout'),
+    path('gestion/', views.gestion, name='gestion'),
 ]
