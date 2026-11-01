@@ -1,0 +1,15 @@
+{% extends 'core/base.html' %}
+
+{% block contenido %}
+
+<h1>Fundación Patrimonio Vivo</h1>
+
+<p>
+    Bienvenidos al catálogo digital de lugares patrimoniales de Chile.
+</p>
+
+<a href="{% url 'catalogo' %}" class="btn btn-primary">
+    Explorar catálogo
+</a>
+
+{% endblock %}

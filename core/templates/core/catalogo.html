@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+
+{% block contenido %}
+
+<h1>Catálogo Patrimonial</h1>
+
+<p>Conoce los lugares patrimoniales de Chile.</p>
+
+<div class="row">
+
+    {% for lugar in lugares %}
+
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+
+            <img src="{{ lugar.imagen }}" class="card-img-top" alt="{{ lugar.nombre }}">
+
+            <div class="card-body">
+                <h5 class="card-title">{{ lugar.nombre }}</h5>
+
+                <p class="card-text">
+                    {{ lugar.ubicacion }}
+                </p>
+
+                <p class="card-text">
+                    Categoría: {{ lugar.categoria.nombre }}
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    {% empty %}
+
+    <p>No existen lugares patrimoniales registrados.</p>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
