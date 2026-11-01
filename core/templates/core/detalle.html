@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+
+{% block contenido %}
+
+<h1>{{ lugar.nombre }}</h1>
+
+<div class="card mb-4">
+
+    <img src="{{ lugar.imagen }}" class="card-img-top"
+         alt="{{ lugar.nombre }}">
+
+    <div class="card-body">
+
+        <h5>Descripción</h5>
+        <p>{{ lugar.descripcion }}</p>
+
+        <h5>Ubicación</h5>
+        <p>{{ lugar.ubicacion }}</p>
+
+        <h5>Año de construcción</h5>
+        <p>{{ lugar.anio_construccion }}</p>
+
+        <h5>Categoría</h5>
+        <p>{{ lugar.categoria.nombre }}</p>
+
+        <a href="{% url 'catalogo' %}" class="btn btn-secondary">
+            Volver al catálogo
+        </a>
+
+    </div>
+</div>
+
+{% endblock %}
