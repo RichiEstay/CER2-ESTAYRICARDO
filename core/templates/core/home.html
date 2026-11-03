@@ -1,16 +1,52 @@
+
 {% extends 'core/base.html' %}
+{% load static %}
 
 {% block contenido %}
 
-<h1>Fundación Patrimonio Vivo</h1>
+<div class="row align-items-center mt-5">
 
-<p>
-    Bienvenidos al catálogo digital de lugares patrimoniales de Chile.
-</p>
+    <div class="col-md-6 mb-4">
 
-<a href="{% url 'catalogo' %}" class="btn btn-primary">
-    Explorar catálogo
-</a>
+        <p style="color: #B65D43; font-weight: bold;">
+            PATRIMONIO CULTURAL DE CHILE
+        </p>
+
+        <h1 class="mb-4">
+            Fundación Patrimonio Vivo
+        </h1>
+
+        <p class="fs-5">
+            Bienvenidos al catálogo digital de lugares
+            patrimoniales de Chile.
+        </p>
+
+        <p>
+            Conoce los monumentos, edificios históricos
+            y espacios culturales que forman parte
+            de nuestra historia.
+        </p>
+
+        <a href="{% url 'catalogo' %}"
+           class="btn btn-primary mt-3">
+            Explorar catálogo
+        </a>
+
+    </div>
+
+    <div class="col-md-6 mb-4">
+
+        <img src="{% static 'core/img/relojflores.jpg' %}"
+             alt="Reloj de Flores de Viña del Mar"
+             class="img-fluid rounded shadow-sm"
+             style="width: 100%; height: auto;">
+
+        <p class="text-muted text-center mt-2">
+            Reloj de Flores - Viña del Mar
+        </p>
+
+    </div>
+
+</div>
 
 {% endblock %}
-
