@@ -24,6 +24,14 @@
     }
 },
 {
+    "model": "core.categoria",
+    "pk": 4,
+    "fields": {
+        "nombre": "Patrimonio Cultural",
+        "descripcion": "Lugares y espacios representativos de las tradiciones, costumbres e identidad cultural de Chile."
+    }
+},
+{
     "model": "core.lugarpatrimonial",
     "pk": 1,
     "fields": {
@@ -69,6 +77,30 @@
         "anio_construccion": 1671,
         "imagen": "https://patrimonio.bienes.cl/wp-content/uploads/2020/05/P1831190-scaled.jpg",
         "categoria": 1
+    }
+},
+{
+    "model": "core.lugarpatrimonial",
+    "pk": 5,
+    "fields": {
+        "nombre": "Isla Aucar",
+        "descripcion": "La Isla Aucar, conocida también como la Isla de las Almas Navegantes, se encuentra en la comuna de Quemchi, en Chiloé. Se caracteriza por su extensa pasarela de madera que conecta la isla con tierra firme, además de su pequeña capilla, cementerio y entorno natural. Es un lugar representativo de las tradiciones y la identidad cultural chilota.",
+        "ubicacion": "Quemchi, Chiloé, Región de Los Lagos",
+        "anio_construccion": 1990,
+        "imagen": "https://viajaresdescubrir.com/wp-content/uploads/2024/07/que-ver-chiloe-isla-aucar.jpg",
+        "categoria": 4
+    }
+},
+{
+    "model": "core.lugarpatrimonial",
+    "pk": 6,
+    "fields": {
+        "nombre": "Iglesia San Francisco de Castro",
+        "descripcion": "La Iglesia San Francisco de Castro es uno de los edificios patrimoniales más representativos de Chiloé. Destaca por su arquitectura de madera, sus colores llamativos y su importancia religiosa y cultural para la comunidad. Forma parte del conjunto de Iglesias de Chiloé declarado Patrimonio Mundial por la UNESCO en el año 2000.",
+        "ubicacion": "Castro, Chiloé, Región de Los Lagos",
+        "anio_construccion": 1912,
+        "imagen": "https://images.myguide-cdn.com/chile/companies/san-francisco-de-castro-church/large/san-francisco-de-castro-church-638012.jpg",
+        "categoria": 4
     }
 }
 ]
