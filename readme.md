@@ -23,40 +23,30 @@ Además, incorpora un sistema de inicio y cierre de sesión, una sección de ges
 
 ## Instalación y ejecución
 
-1. Descargar o clonar el repositorio.
+1. Descargar o clonar el repositorio desde GitHub.
 2. Abrir la carpeta del proyecto en Visual Studio Code.
-3. Abrir una terminal en la carpeta donde se encuentra `manage.py`.
+3. Abrir una terminal en la carpeta donde se encuentra 'manage.py'.
 4. Instalar las dependencias:
 
-   ```bash
    py -m pip install -r requirements.txt
-   ```
 
 5. Aplicar las migraciones:
 
-   ```bash
    py manage.py migrate
-   ```
 
 6. Importar los datos de prueba:
 
-   ```bash
    py manage.py loaddata datos_prueba.json
-   ```
 
 7. Crear un superusuario:
 
-   ```bash
    py manage.py createsuperuser
-   ```
 
 8. Iniciar el servidor:
 
-   ```bash
    py manage.py runserver
-   ```
 
-9. Abrir la aplicación en:
+9. Abrir la aplicación en el navegador:
 
    http://127.0.0.1:8000/home/
 
@@ -74,55 +64,92 @@ Además, incorpora un sistema de inicio y cierre de sesión, una sección de ges
 
 ## Usuarios y permisos
 
-El sistema utiliza el modelo de usuarios y permisos incorporado en Django.
+El sistema utiliza el modelo de usuarios, grupos y permisos incorporado en Django.
 
 **Administrador:** superusuario con acceso completo al sistema.
 
-**Gestor Patrimonial:** usuario con `Staff status` habilitado y perteneciente al grupo `Gestores Patrimoniales`, que tiene los siguientes permisos sobre LugarPatrimonial:
+**Gestor Patrimonial:** usuario con 'Staff status' habilitado y perteneciente al grupo 'Gestores Patrimoniales'.
+
+Este grupo debe tener los siguientes permisos sobre 'LugarPatrimonial':
 
 - Can view lugar patrimonial.
 - Can add lugar patrimonial.
 - Can change lugar patrimonial.
 
-No tiene permiso para eliminar lugares patrimoniales.
+El gestor puede consultar, agregar y modificar lugares patrimoniales, pero no tiene permiso para eliminarlos.
 
-**Visitante registrado:** usuario sin permisos de gestión, que puede consultar el catálogo público, pero no acceder a la sección de gestión restringida.
+**Visitante registrado:** usuario sin permisos de gestión. Puede consultar el catálogo público, pero no acceder a la sección de gestión restringida.
 
 ### Configuración de usuarios y permisos
 
-1. Ingresar a Django Admin con el superusuario.
-2. Crear el grupo `Gestores Patrimoniales`.
-3. Asignarle los permisos para ver, agregar y modificar lugares patrimoniales.
-4. Crear un usuario llamado `gestor1`.
-5. Activar `Staff status` para ese usuario.
-6. Asociarlo al grupo `Gestores Patrimoniales`.
-7. Crear opcionalmente un usuario `visitante1` sin permisos administrativos para comprobar las restricciones.
+1. Iniciar el servidor e ingresar a http://127.0.0.1:8000/admin/ con el superusuario.
+2. En Django Admin, ingresar a 'Groups'.
+3. Crear un grupo llamado 'Gestores Patrimoniales'.
+4. Asignarle los permisos para ver, agregar y modificar 'LugarPatrimonial'.
+5. Guardar el grupo.
+6. Ingresar a 'Users' y crear un usuario llamado 'gestor1'.
+7. Establecer una contraseña de prueba.
+8. Activar 'Staff status' para ese usuario.
+9. Asociar 'gestor1' al grupo 'Gestores Patrimoniales' y guardar.
+10. Crear otro usuario llamado 'visitante1'.
+11. No activar 'Staff status' ni asignarle permisos administrativos a 'visitante1'.
+12. Guardar los cambios.
 
 Las contraseñas deben definirse durante la configuración y no se incluyen en el repositorio.
 
 ## Datos de prueba
 
-El proyecto incluye el archivo `datos_prueba.json`, que contiene categorías y lugares patrimoniales para probar el funcionamiento de la aplicación.
+El proyecto incluye el archivo 'datos_prueba.json', que contiene categorías y lugares patrimoniales para probar el funcionamiento de la aplicación.
 
 Para cargar estos registros, ejecutar:
 
-```bash
 py manage.py loaddata datos_prueba.json
-```
 
 Este comando debe ejecutarse después de aplicar las migraciones.
 
-Los datos permiten comprobar el catálogo, los detalles individuales y los filtros por categoría.
+Los datos permiten comprobar:
+
+- El catálogo de lugares patrimoniales.
+- Los detalles individuales de cada lugar.
+- Los filtros por categoría.
+- La visualización de imágenes e información patrimonial.
 
 Los usuarios y grupos se configuran por separado desde Django Admin, siguiendo las instrucciones anteriores.
 
-## Pruebas de acceso
+## Pruebas de acceso y permisos
 
-- Un usuario sin iniciar sesión que intenta entrar a `/gestion/` es enviado al formulario de inicio de sesión.
-- Un usuario autenticado sin permisos de gestión recibe un error 403.
-- Un usuario con permisos puede ingresar a Gestión y administrar lugares patrimoniales desde Django Admin.
-- Un gestor sin permiso de eliminación no puede eliminar lugares patrimoniales.
+Para comprobar el funcionamiento de las restricciones, realizar las siguientes pruebas:
+
+**Prueba 1: Usuario sin iniciar sesión**
+
+1. Cerrar cualquier sesión activa.
+2. Intentar ingresar a http://127.0.0.1:8000/gestion/.
+3. El sistema debe redirigir al formulario de inicio de sesión.
+
+**Prueba 2: Usuario visitante1**
+
+1. Iniciar sesión con 'visitante1'.
+2. Intentar ingresar a http://127.0.0.1:8000/gestion/.
+3. El sistema debe mostrar un error 403 por falta de permisos.
+
+**Prueba 3: Usuario gestor1**
+
+1. Iniciar sesión con 'gestor1'.
+2. Ingresar a http://127.0.0.1:8000/gestion/.
+3. El usuario debe poder acceder a la sección de gestión.
+4. Desde Django Admin, debe poder visualizar, agregar y modificar lugares patrimoniales.
+5. No debe tener permiso para eliminar lugares patrimoniales.
+
+**Prueba 4: Administrador**
+
+1. Iniciar sesión con el superusuario.
+2. Ingresar a Django Admin.
+3. Comprobar que puede administrar categorías, lugares patrimoniales, usuarios y grupos.
 
 ## Repositorio
 
-CER2-ESTAYRICARDO
+Nombre del repositorio: CER2-ESTAYRICARDO
+
+El repositorio público de GitHub contiene el código fuente, las dependencias, las migraciones, los datos de prueba y las instrucciones necesarias para ejecutar el proyecto.
+
+No se incluyen contraseñas personales ni credenciales sensibles en los datos de prueba.
